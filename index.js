@@ -1,7 +1,15 @@
+const navbar = (
+    <nav>
+        <h1>AA Carbide, Inc.</h1>
+        <ul>
+            <li>Pricing</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+)
+
 ReactDOM.render(
-  <ul>
-    <li>one</li>
-    <li>two</li>
-  </ul>,
-  document.getElementById("root")
-);
+    navbar,
+    document.getElementById('root')
+)
