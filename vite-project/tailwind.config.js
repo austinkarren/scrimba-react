@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"], // Adjusted paths
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'inter': ['Inter', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
