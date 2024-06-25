@@ -5,6 +5,8 @@ import Main from './components/Main.jsx';
 import Footer from './components/Footer.jsx';
 
 import './App.css'
+import './input.css'
+
 
 const App = () => {
 
