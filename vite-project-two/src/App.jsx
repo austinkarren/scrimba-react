@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import LocationCard from './components/LocationCard'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [locationsArray, getData] = useState([]);
+  const apiURL = 'http://localhost:3000';
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = () => {
+    fetch(`${apiURL}/api/data`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("DATA", data)
+        getData(data.locations);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-red-800'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {locationsArray.map((location, index) => {
+        console.log("LOCATION NAME", location.name);
+        return (
+          <div key={index}>
+            <p>{location.name}</p>
+            <img src={`${apiURL}${location.image}`}/>
+          </div>
+        );
+      })}
     </>
-  )
-}
+  );}
 
 export default App
